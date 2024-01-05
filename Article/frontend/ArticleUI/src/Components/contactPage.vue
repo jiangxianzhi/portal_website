@@ -13,7 +13,7 @@
     <!-- 内容 -->
     <div class="wrapp2">
       <div class="content">
-        <div class="title">Contact Us</div>
+        <div class="title"> 联系方式</div>
         <div class="subContent">
           <div>
             地址： aabbcc
@@ -64,12 +64,13 @@ export default{
 .wrapp2 {
   display: flex;
   justify-content: center;
-  background-color: #dbf3fa;
+  /* background-color: #dbf3fa; */
 }
 .title {
   font-weight: bold;
   color: black;
   width: 10%;
+  font-size:26px;
 }
 .subContent {
   width: 50%;

@@ -94,8 +94,8 @@ export default {
         .get("http://localhost:8080/PublicKey/key1")
         .then((response) => {
           // Handle response
-          console.log("recieve public key successful");
-          console.log(response);
+          // console.log("recieve public key successful");
+          // console.log(response);
           this.publicKey = response.data;
           // 这里怎么打印不出来呢，java中是publickey,是不是要转成什么格式？,16进制
         })
@@ -124,7 +124,7 @@ export default {
 
       this.tempPassword = encryptedPassword;
 
-      console.log("encryptedPassword is " + encryptedPassword);
+      // console.log("encryptedPassword is " + encryptedPassword);
     },
   },
 };

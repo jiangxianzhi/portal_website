@@ -106,7 +106,7 @@ export default {
         // 这里判断要更加完善，空格什么之类的额，还要防止注入sql
         return true;
       } else {
-        this.open("有内容没填完整");
+        this.open("内容没填完整");
         return false;
       }
     },
@@ -167,7 +167,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 60vh; /* Set the height of the father div */
+  height: 400px; 
   background-color: #f0f8ff;
   padding-left: 20%;
   padding-right: 20%;
@@ -180,12 +180,15 @@ export default {
 
 .button_submit {
   border: 0;
-  background-color: #0e3047;
+  background-color: #8dabbe;
   color: white;
   border-radius: 6px;
   width: 200px;
   height: 52px;
   font-size: 28px;
+}
+.button_submit:hover{
+  background-color: #098ee7;
 }
 .leaveMessageContent {
   display: flex;
