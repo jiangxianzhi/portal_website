@@ -78,7 +78,7 @@ export default {
           const expirationTime = currentTime + 4 * 60 * 60 * 1000; // 4 hours in milliseconds
           localStorage.setItem("accessKey", data);
           localStorage.setItem("accessKeyExpiration", expirationTime);
-        //   跳转controlPage
+        //   跳转管理页面
         this.$router.push('/managePage');
 
         })

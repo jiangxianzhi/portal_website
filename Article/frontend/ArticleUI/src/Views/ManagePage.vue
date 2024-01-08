@@ -1,76 +1,34 @@
 <script>
-import { Search } from "@element-plus/icons-vue";
-import { Edit } from "@element-plus/icons-vue";
-import uploadPage from "../Components/uploadPage.vue";
-import controlPage from "../Components/controlPage.vue";
+import controlArticle from "../Components/controlArticle.vue";
 import leaveMessgaeManage from "../Components/leavePart/leaveMessgaeManage.vue";
-import pageComponet from '@/Components/pagePart/pageComponet.vue'
+import pageComponet from "@/Components/pagePart/pageComponet.vue";
 export default {
   components: {
-    uploadPage,
-    controlPage,
+    controlArticle,
     leaveMessgaeManage,
-    pageComponet
-  },
-  watch:{
-dailogValue(newValue,oldValue){
-  console.log(newValue)
-  if(newValue === false){
-    this.fatherPageReGetAllArticle = !this.fatherPageReGetAllArticle;
-  }
-}  },
-
-  data() {
-    return {
-      dailogValue: false,
-      fatherPageReGetAllArticle:false
-    };
-  },
-  methods: {
-    toggleDailog() {
-      this.dailogValue = !this.dailogValue;
-    },
-  
+    pageComponet,
   },
 };
 </script>
 
 <template>
   <div>
-      <!-- 控制页面 -->
+    <!-- 控制页面 -->
 
-<!-- 文章部分 -->
-<div>
-      <!-- 上传文章按钮 -->
-      <div>  this is article part</div>
+    <!-- 文章部分 -->
     <div>
-  
-      <el-button size="large"  @click="toggleDailog"
-        >新建文章<el-icon><Plus /></el-icon
-      ></el-button>
+      <controlArticle></controlArticle>
     </div>
 
-    <controlPage :reGetAllArticle="fatherPageReGetAllArticle"></controlPage>
-        <!-- 上传新文章页面 -->
-        <div>
-      <el-dialog v-model="dailogValue" width="90%">
-        <uploadPage></uploadPage>
-      </el-dialog>
-    </div>
-</div>
-
-
-    
-<!-- 留言部分 -->
+    <!-- 留言部分 -->
     <div>
       <leaveMessgaeManage></leaveMessgaeManage>
     </div>
-    
-<!-- 页面部分 -->
-<div>
-  <pageComponet></pageComponet>
-</div>
 
+    <!-- 页面部分 -->
+    <div>
+      <pageComponet></pageComponet>
+    </div>
   </div>
 </template>
 

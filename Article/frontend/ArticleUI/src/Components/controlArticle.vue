@@ -1,12 +1,26 @@
 <template>
   <div>
+    <div>this is article part</div>
+    <!-- 上传文章按钮 -->
+    <div>
+      <el-button size="large" @click="toggleDailog"
+        >新建文章<el-icon><Plus /></el-icon
+      ></el-button>
+    </div>
+    <!-- 新建文章的弹窗 -->
+    <div>
+      <el-dialog v-model="dailogValue" width="90%">
+        <uploadPage></uploadPage>
+      </el-dialog>
+    </div>
+
     <!-- 文章显示 -->
     <el-table :data="articleList" style="width: 100%">
       <el-table-column fixed prop="id" label="ID" width="150" />
       <el-table-column prop="title" label="title" width="120" />
       <el-table-column fixed="right" label="Operations" width="120">
         <template #default="{ row }">
-         <!-- 文章编辑按钮 -->
+          <!-- 文章编辑按钮 -->
           <el-button
             link
             type="primary"
@@ -29,11 +43,8 @@
     <!-- 文章修改弹窗页面 -->
     <el-dialog v-model="dialogVisible" width="80%">
       <wangEditVue :article="choosedArticle"></wangEditVue>
-      <div>
-        预览
-        <div>{{ choosedArticle.title }}</div>
-        <div v-html="choosedArticle.content"></div>
-      </div>
+
+  
     </el-dialog>
   </div>
 </template>
@@ -42,7 +53,7 @@
 import { ElMessage } from "element-plus";
 import axios from "axios";
 import { watch } from "vue";
-
+import uploadPage from "./uploadPage.vue";
 import wangEditVue from "./wangEdit.vue";
 import axiosInstance from "../axiosAbstract/axiosAPI";
 export default {
@@ -51,6 +62,7 @@ export default {
 
   components: {
     wangEditVue,
+    uploadPage,
   },
   // 挂载前得到所有文章
   beforeMount() {
@@ -62,21 +74,34 @@ export default {
       articleList: [],
       dialogVisible: false,
       choosedArticle: { title: "a", content: "b" },
+      dailogValue:false,
+      
     };
   },
+
   watch: {
     reGetAllArticle(newValue, oldValue) {
       // console.log("reGetAllArticle is changed");
       this.getAllArticles();
     },
-    // 关闭的时候从新获取文章
+    // 关闭修改文章时，获取所有文章
     dialogVisible(newValue, oldValue) {
       if (newValue === false) {
         this.getAllArticles();
       }
     },
+    // 关闭新建文章时，获取所有文章
+    dailogValue(newValue, oldValue) {
+      if (newValue === false) {
+        this.getAllArticles();
+      }
+    }
   },
   methods: {
+    // 新建文章弹窗控制
+    toggleDailog() {
+      this.dailogValue = !this.dailogValue;
+    },
     // 获取所有文章
     getAllArticles() {
       axios
@@ -134,7 +159,7 @@ export default {
         });
     },
     open9(id) {
-      ElMessage.success("delete id : "+id+"  article success");
+      ElMessage.success("delete id : " + id + "  article success");
     },
     open10() {
       ElMessage.warning("delete this article failed");

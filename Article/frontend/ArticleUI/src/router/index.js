@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import ShowPage from "../Views/ShowPage.vue";
 import ManagePage from "../Views/ManagePage.vue";
 import uploadPage from "../Components/uploadPage.vue";
-import controlPage from "../Components/controlPage.vue";
+import controlArticle from "../Components/controlArticle.vue";
 import homePage from "../Components/homePage.vue";
 
 import contactPage from "../Components/contactPage.vue";
@@ -61,9 +61,9 @@ const routes = [
         component: uploadPage,
       },
       {
-        path: "controlPage",
-        name: "ControlPage",
-        component: controlPage,
+        path: "controlArticle",
+        name: "controlArticle",
+        component: controlArticle,
       },
     ],
   },
