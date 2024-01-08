@@ -180,7 +180,7 @@ export default {
 
 .button_submit {
   border: 0;
-  background-color: #8dabbe;
+  background-color: rgb(76, 183, 250);
   color: white;
   border-radius: 6px;
   width: 200px;

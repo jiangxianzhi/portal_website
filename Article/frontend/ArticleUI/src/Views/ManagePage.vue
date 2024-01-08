@@ -38,10 +38,11 @@ dailogValue(newValue,oldValue){
 <template>
   <div>
       <!-- 控制页面 -->
-    <!-- <div>manager</div> -->
 
-    <!-- 上传文章按钮 -->
-    <div>  this is article part</div>
+<!-- 文章部分 -->
+<div>
+      <!-- 上传文章按钮 -->
+      <div>  this is article part</div>
     <div>
   
       <el-button size="large"  @click="toggleDailog"
@@ -50,20 +51,26 @@ dailogValue(newValue,oldValue){
     </div>
 
     <controlPage :reGetAllArticle="fatherPageReGetAllArticle"></controlPage>
-    <!-- 上传新文章页面 -->
-    <div>
+        <!-- 上传新文章页面 -->
+        <div>
       <el-dialog v-model="dailogValue" width="90%">
         <uploadPage></uploadPage>
       </el-dialog>
     </div>
+</div>
+
+
+    
 <!-- 留言部分 -->
     <div>
       <leaveMessgaeManage></leaveMessgaeManage>
     </div>
-<!-- 页面控制 -->
+    
+<!-- 页面部分 -->
 <div>
   <pageComponet></pageComponet>
 </div>
+
   </div>
 </template>
 

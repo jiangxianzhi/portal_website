@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <!-- <carousl></carousl>
-    <linkPart></linkPart> -->
+   <carousl></carousl>
+    <!--  <linkPart></linkPart> -->
     <div class="News">
       <div class="subNews">News</div>
       <ShowPage></ShowPage>

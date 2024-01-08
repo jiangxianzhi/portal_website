@@ -39,7 +39,7 @@ export default {
         {
           name: 'lj',
           src: new URL(
-            '../../static/carouselPic/pexels-irewolede-1389781.jpg',
+            '../../static/carouselPic/landscape-horizon-mountain-snow-cloud-sky-1102604-pxhere.com.jpg',
             import.meta.url
           ).href,
           title: 'a'
@@ -47,18 +47,18 @@ export default {
         {
           name: 'logo',
           src: new URL(
-            '../../static/carouselPic/pexels-kelly-2382849.jpg',
+            '../../static/carouselPic/sea-ocean-horizon-mountain-snow-cloud-7497-pxhere.com.jpg',
             import.meta.url
           ).href,
-          title: 'bg'
+          title: 'b'
         },
         {
           name: 'logo',
           src: new URL(
-            '../../static/carouselPic/轮播图.png',
+            '../../static/carouselPic/water-snow-winter-light-cloud-sky-1201501-pxhere.com.jpg',
             import.meta.url
           ).href,
-          title: '轮播图.png'
+          title: 'c'
         },
       ]
     }

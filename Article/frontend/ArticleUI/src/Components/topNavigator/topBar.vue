@@ -88,7 +88,7 @@
       <el-sub-menu class="el-menu-collapse">
         <template #title>
           <el-icon><Operation /></el-icon>
-          <span>Navigator</span>
+       
         </template>
 
         <el-menu-item index="/homePage" @click="() => gotoPage('homePage')"
