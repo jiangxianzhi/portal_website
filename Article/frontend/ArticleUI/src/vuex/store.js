@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import axios from "axios";
 import axiosInstance from "@/axiosAbstract/axiosAPI.js";
-
+import { ElMessage } from "element-plus";
 const store = createStore({
   state: {
     //    页面加载相关的数据
@@ -67,19 +67,29 @@ const store = createStore({
 
     
       }
+      // 显示删除成功和失败图标
+      function open9(id) {
+        ElMessage.success("delete id : " + id + "  page success");
+      }
+      function open10(id) {
+        ElMessage.warning("delete page failed");
+      }
 
-      function deleteSinglePage(arr,id) {
         // 通过id删除page，两点，本地删除+调用接口删除（就不用重新加载了）
+      function deleteSinglePage(arr,id) {
         axiosInstance
           .get("http://localhost:8080/page/" + id)
           .then((response) => {
             if (response.data === 1) {
               commit("setPageData", arr);
+              open9(id);
             } else {
+              open10(id)
             }
           })
           .catch((error) => {
             console.log(error);
+            open10(id)
           });
       }
 

@@ -23,7 +23,7 @@
   </template>
   <script>
   import { ElSwitch, ElColorPicker, ElMessage } from 'element-plus'
-  import { ref,watch } from 'vue'
+  import { ref,watch,onBeforeMount } from 'vue'
   import { useStore } from 'vuex';
   export default {
     name: "baseTree",
@@ -35,6 +35,11 @@
       const cloneNodeDrag = ref(true)
       const store = useStore();
     const pageTree = ref({});
+    // 初始化加载 pageTree
+    onBeforeMount(() => {
+      pageTree.value = store.state.pageTree;
+    });
+
     const treeProps = {
       label: 'title', // Replace with the property name for the node label in your pageTree data
       children: 'children' // Replace with the property name for the children nodes in your pageTree data
@@ -51,6 +56,8 @@
         treeProps
       }
     },
+
+
     data() {
       return {
      

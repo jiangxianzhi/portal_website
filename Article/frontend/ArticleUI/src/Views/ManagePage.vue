@@ -11,25 +11,63 @@ export default {
 };
 </script>
 
-<template>
-  <div>
-    <!-- 控制页面 -->
 
-    <!-- 文章部分 -->
+  <!-- <div>
+
     <div>
       <controlArticle></controlArticle>
     </div>
 
-    <!-- 留言部分 -->
     <div>
       <leaveMessgaeManage></leaveMessgaeManage>
     </div>
 
-    <!-- 页面部分 -->
     <div>
       <pageComponet></pageComponet>
     </div>
+  </div> -->
+
+<template>
+  <div>
+   <el-container>
+<el-aside width="200px">
+  <el-menu>
+      <el-menu-item class="manageComponentSideNavigatorItem " index="1" >
+        <router-link to="/managePage/controlArticle" >
+       
+            Control Article
+          
+        </router-link>
+      </el-menu-item>
+      <el-menu-item class="manageComponentSideNavigatorItem" index="2">
+        <router-link to="/managePage/leaveMessgaeManage">Leave Message Manage</router-link>
+      </el-menu-item>
+      <el-menu-item class="manageComponentSideNavigatorItem" index="3">
+        <router-link to="/managePage/pageComponet">Page Component</router-link>
+      </el-menu-item>
+    </el-menu>
+</el-aside>
+<el-main>
+    <div>
+      <router-view></router-view>
+    </div>
+    </el-main>
+   </el-container>
   </div>
 </template>
 
-<style></style>
+<style>
+
+.manageComponentSideNavigatorItem{
+  border-bottom: 1px solid #ccc;
+ 
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+ 
+.router-link-active {
+  text-decoration: none;
+}
+</style>

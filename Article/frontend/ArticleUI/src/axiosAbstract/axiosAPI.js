@@ -25,4 +25,15 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+axiosInstance.interceptors.response.use(
+  (response) => {
+    if (response.data === 0) {
+      router.push("/loginPage");
+    }
+    return response;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 export default axiosInstance; 

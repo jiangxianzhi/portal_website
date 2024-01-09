@@ -10,6 +10,9 @@ import contactPage from "../Components/contactPage.vue";
 import LoginPage from "../Views/LoginPage.vue";
 import NotFound from "../Views//NotFound.vue";
 import PageComponent from "@/Components/pageComponent.vue";
+
+import leaveMessgaeManage from "../Components/leavePart/leaveMessgaeManage.vue";
+import pageComponet from "@/Components/pagePart/pageComponet.vue";
 const routes = [
     //Other routes...
     {
@@ -55,16 +58,23 @@ const routes = [
     component: ManagePage,
 
     children: [
-      {
-        path: "uploadPage",
-        name: "UploadPage",
-        component: uploadPage,
-      },
+   
       {
         path: "controlArticle",
         name: "controlArticle",
         component: controlArticle,
       },
+      {
+        path: "leaveMessgaeManage",
+        name: "leaveMessgaeManage",
+        component: leaveMessgaeManage,
+      },
+      {
+        path: "pageComponet",
+        name: "pageComponet",
+        component: pageComponet,
+      },
+
     ],
   },
 ];

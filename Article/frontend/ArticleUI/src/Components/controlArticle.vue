@@ -43,8 +43,6 @@
     <!-- 文章修改弹窗页面 -->
     <el-dialog v-model="dialogVisible" width="80%">
       <wangEditVue :article="choosedArticle"></wangEditVue>
-
-  
     </el-dialog>
   </div>
 </template>
@@ -52,7 +50,6 @@
 <script>
 import { ElMessage } from "element-plus";
 import axios from "axios";
-import { watch } from "vue";
 import uploadPage from "./uploadPage.vue";
 import wangEditVue from "./wangEdit.vue";
 import axiosInstance from "../axiosAbstract/axiosAPI";
@@ -74,8 +71,7 @@ export default {
       articleList: [],
       dialogVisible: false,
       choosedArticle: { title: "a", content: "b" },
-      dailogValue:false,
-      
+      dailogValue: false,
     };
   },
 
@@ -95,7 +91,7 @@ export default {
       if (newValue === false) {
         this.getAllArticles();
       }
-    }
+    },
   },
   methods: {
     // 新建文章弹窗控制
@@ -151,6 +147,7 @@ export default {
             );
           } else {
             this.open10();
+        
           }
         })
         .catch((error) => {

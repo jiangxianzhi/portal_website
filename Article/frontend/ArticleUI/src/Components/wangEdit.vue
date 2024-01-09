@@ -153,6 +153,7 @@ export default {
           id.value = null;
         } else {
           open6();
+   
         }
       } catch (error) {
         open6();

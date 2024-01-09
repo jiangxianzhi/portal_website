@@ -171,6 +171,7 @@ const editorConfig = { MENU_CONF: {} , placeholder: "请输入内容..."}
             title1.value = "";
           } else {
             open6();
+       
           }
           return;
         } catch (error) {
