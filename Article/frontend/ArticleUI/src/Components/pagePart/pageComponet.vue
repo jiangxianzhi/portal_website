@@ -1,6 +1,6 @@
 <template>
   <div>
-    this is pageControl component
+ 
     <!-- 新建页面的弹窗 -->
     <div>
       <div>

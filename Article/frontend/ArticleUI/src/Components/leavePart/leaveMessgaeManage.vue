@@ -1,5 +1,5 @@
 <template>
-  <div>this is leaveMessage managerPart
+  <div>
 
     <!-- 显示留言 -->
     <div>

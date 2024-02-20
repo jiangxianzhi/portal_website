@@ -33,17 +33,17 @@ export default {
 <el-aside width="200px">
   <el-menu>
       <el-menu-item class="manageComponentSideNavigatorItem " index="1" >
-        <router-link to="/managePage/controlArticle" >
+        <router-link to="/managePage/controlArticle" class="inheritHeightAndWidth" >
        
             Control Article
           
         </router-link>
       </el-menu-item>
       <el-menu-item class="manageComponentSideNavigatorItem" index="2">
-        <router-link to="/managePage/leaveMessgaeManage">Leave Message Manage</router-link>
+        <router-link to="/managePage/leaveMessgaeManage" class="inheritHeightAndWidth">Leave Message Manage</router-link>
       </el-menu-item>
       <el-menu-item class="manageComponentSideNavigatorItem" index="3">
-        <router-link to="/managePage/pageComponet">Page Component</router-link>
+        <router-link to="/managePage/pageComponet" class="inheritHeightAndWidth">Page Component</router-link>
       </el-menu-item>
     </el-menu>
 </el-aside>
@@ -69,5 +69,10 @@ a {
  
 .router-link-active {
   text-decoration: none;
+}
+
+.inheritHeightAndWidth{
+  height: 100%;
+  width:100%;
 }
 </style>

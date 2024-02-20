@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>this is article part</div>
+
     <!-- 上传文章按钮 -->
     <div>
       <el-button size="large" @click="toggleDailog"
