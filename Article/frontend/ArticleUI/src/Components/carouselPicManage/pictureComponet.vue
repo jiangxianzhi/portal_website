@@ -1,4 +1,5 @@
 <template>
+  <!-- 图片上传大小在yaml里面设置 -->
   <div>
    
     <div>
@@ -19,14 +20,127 @@
         </div>
       </div>
     </div>
-    <div>展示部分</div>
+
+    <div>
+      
+    
+    
+        <!-- 图片显示 -->
+        <el-table :data="carouselPictureList" style="width: 100%">
+      <el-table-column fixed prop="id" label="ID" width="100" />
+      <el-table-column prop="name" label="name" width="100" />
+      <el-table-column prop="preivew" label="preview" width="120">
+      <template #default="{ row }">
+        <span v-if="row.name">
+          <img :src="`http://localhost:8080/carouselImages/${row.name}`" alt="Preview" style="max-width: 100px; max-height: 100px;" />
+        </span>
+        <span v-else>No preview available</span>
+      </template>
+    </el-table-column>
+      <el-table-column prop="status" label="status" width="120">
+      <template #default="{ row }">
+        <span v-if="row.status === 0">未选择</span>
+        <span v-else>正在使用</span>
+      </template>
+    </el-table-column>
+      <el-table-column fixed="right" label="Operations" width="120">
+        <template #default="{ row }">
+          <!-- 图片修改状态按钮 -->
+          <el-button
+            link
+            type="primary"
+            size="small"
+            @click="changeStatus(row)"
+            >Edit Status</el-button
+          >
+          <!-- 图片删除按钮 -->
+          <el-button
+            link
+            type="primary"
+            size="small"
+            @click="deleteSingleCarouselPicture(row.id)"
+            >Delete</el-button
+          >
+        </template>
+      </el-table-column>
+    </el-table>
+    
+    
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 export default{
-    methods: {
+    // 挂载前得到所有carouselPicture
+    beforeMount() {
+    this.getAllcarouselPicture();
+  }
+  ,
+  data(){
+    return{
+      carouselPictureList: null,
+    }
+  }
+  ,
+    methods: {  
+      // 改变图状态
+      changeStatus(row){
+        if(row.status ===1){
+          row.status = 0;
+        }else{
+          row.status =1;
+        }
+        axios
+        .get("http://localhost:8080/carouselPicture/changeStatusById/"+row.id+"?status="+row.status)
+        .then((response) => {
+         if(response.data===1){
+          // 删除成功，刷新
+          this.getAllcarouselPicture();
+         }
+  
+         
+        })
+        .catch((error) => {
+          console.error("Error fetching articles", error);
+         
+        });
+      },
+      
+        // 获取一张图
+      deleteSingleCarouselPicture(id){
+        axios
+        .get("http://localhost:8080/carouselPicture/"+id)
+        .then((response) => {
+         if(response.data===1){
+          // 删除成功，刷新
+          this.getAllcarouselPicture();
+         }
+          // console.log("response.data is " + response.data);
+         
+        })
+        .catch((error) => {
+          console.error("Error fetching articles", error);
+         
+        });
+    }
+      ,
+      // 获取所有图
+    getAllcarouselPicture() {
+      axios
+        .get("http://localhost:8080/carouselPicture")
+        .then((response) => {
+          this.carouselPictureList = response.data;
+          // console.log("response.data is " + response.data);
+         
+        })
+        .catch((error) => {
+          console.error("Error fetching articles", error);
+         
+        });
+    },
+// 点击按钮上传
   uploadFile() {
     this.$refs.fileInput.click();
   },
@@ -48,17 +162,17 @@ handleDrop(event) {
       try {
         const response = await axios.post('http://localhost:8080/carouselPicture/PictureUpload', formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
+          // 进度条
           onUploadProgress: (progressEvent) => {
             const Percent = parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total))
-            // console.log('progress is ' + Percent)
-            // Update the progressPercent data property
+        
             this.progressPercent1 = Percent
-            // console.log("count is");
-            // console.log(this.count++);
-            // console.log('progress is ' + this.progressPercent1)
+      
           }
         })
-        console.log(response)
+
+        // 刷新
+        this.getAllcarouselPicture();
       
       } catch (error) {
         console.error(error)

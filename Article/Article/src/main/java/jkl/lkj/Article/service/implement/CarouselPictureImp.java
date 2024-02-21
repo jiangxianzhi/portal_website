@@ -27,7 +27,7 @@ public class CarouselPictureImp implements CarouselPictureService {
 
         String OriginalFilename = file.getOriginalFilename();
         String fileName = System.currentTimeMillis() + "." + OriginalFilename.substring(OriginalFilename.lastIndexOf(".") + 1);
-        String path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\assets\\images\\";
+        String path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\assets\\carouselImages\\";
         File dest = new File(path + fileName);
         if (!dest.getParentFile().exists()) {
             dest.getParentFile().mkdirs();
@@ -67,7 +67,7 @@ public class CarouselPictureImp implements CarouselPictureService {
 //          System.out.println(carouselPicture);
             String name = carouselPicture.map(CarouselPicture::getName).orElse(null);
 //            System.out.println(name);
-            String path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\assets\\images\\";
+            String path = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\assets\\carouselImages\\";
 //
             if (name != null) {
                 File fileToDelete = new File(path + name);

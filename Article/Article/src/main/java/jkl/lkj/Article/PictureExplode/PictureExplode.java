@@ -19,5 +19,7 @@ public class PictureExplode implements WebMvcConfigurer {
 //        映射此文件夹下所有文件
         registry.addResourceHandler("/img/**")
                 .addResourceLocations("file:" + System.getProperty("user.dir")+"/src/main/resources/static/assets/images/" );
+        registry.addResourceHandler("/carouselImages/**")
+                .addResourceLocations("file:" + System.getProperty("user.dir") + "/src/main/resources/static/assets/carouselImages/");
     }
 }
