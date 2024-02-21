@@ -41,7 +41,7 @@ handleDrop(event) {
 
       // 上传图片
       async handleFileUpload() {
-        console.log('1')
+        console.log('trigger drag upload function')
       const formData = new FormData()
       //  this.$refs.file.files[0]就是这个图片
       formData.append('image', this.$refs.fileInput.files[0])
