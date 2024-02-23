@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { ElMessage } from "element-plus";
 import axios from 'axios'
 export default{
     // 挂载前得到所有carouselPicture
@@ -87,40 +88,50 @@ export default{
     methods: {  
       // 改变图状态
       changeStatus(row){
+        let tmp ;
         if(row.status ===1){
-          row.status = 0;
+         tmp =0;
         }else{
-          row.status =1;
+         tmp =1;
         }
         axios
-        .get("http://localhost:8080/carouselPicture/changeStatusById/"+row.id+"?status="+row.status)
+        .get("http://localhost:8080/carouselPicture/changeStatusById/"+row.id+"?status="+tmp)
         .then((response) => {
          if(response.data===1){
-          // 删除成功，刷新
+         
+          ElMessage.success("改变成功")
+          
           this.getAllcarouselPicture();
+         }else{
+          ElMessage.warning("改变失败")
          }
-  
+       
          
         })
         .catch((error) => {
           console.error("Error fetching articles", error);
-         
+          ElMessage.warning("改变失败")
         });
       },
       
-        // 获取一张图
+  
       deleteSingleCarouselPicture(id){
         axios
         .get("http://localhost:8080/carouselPicture/"+id)
         .then((response) => {
          if(response.data===1){
+          ElMessage.success("删除成功")
           // 删除成功，刷新
           this.getAllcarouselPicture();
+         }else {
+          ElMessage.warning("删除失败")
          }
+        
           // console.log("response.data is " + response.data);
          
         })
         .catch((error) => {
+          ElMessage.warning("删除失败")
           console.error("Error fetching articles", error);
          
         });
@@ -133,10 +144,11 @@ export default{
         .then((response) => {
           this.carouselPictureList = response.data;
           // console.log("response.data is " + response.data);
-         
+          ElMessage.success("获取所有成功")
         })
         .catch((error) => {
           console.error("Error fetching articles", error);
+          ElMessage.warning("获取所有失败")
          
         });
     },
@@ -170,12 +182,13 @@ handleDrop(event) {
       
           }
         })
-
+        ElMessage.success("上传成功")
         // 刷新
         this.getAllcarouselPicture();
       
       } catch (error) {
         console.error(error)
+        ElMessage.warning("上传失败")
       }
     }
 }

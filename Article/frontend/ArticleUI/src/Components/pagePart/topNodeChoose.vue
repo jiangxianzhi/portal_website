@@ -14,7 +14,7 @@
           :key="item.id"
           :command="item.id"
         >
-          {{ item.id }}</el-dropdown-item
+          {{ item.title }}</el-dropdown-item
         >
       </el-dropdown-menu>
     </template>
