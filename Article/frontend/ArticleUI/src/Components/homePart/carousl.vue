@@ -23,6 +23,7 @@ export default {
   beforeMount() {
     // 加载图片
     this.get_All_carousel_Picture_Which_Status_Equal_To_1();
+    this.updateWidth()
   },
 
   methods: {
@@ -41,9 +42,9 @@ export default {
             (item) => item.status === 1
           );
           if (carouselPicture_status_equal_to_1.length > 0) {
-           
+
             // 格式调整
-         
+
             this.imgList = carouselPicture_status_equal_to_1.map((item) => {
               return {
                 ...item,
